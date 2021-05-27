@@ -21,7 +21,18 @@ function setup() {
 	dustbinObj=new dustbin(1200,650);
 	paper=new Paper(100,650,70);
 
-	Engine.run(engine);
+	var render = Render.create({
+		element: document.body,
+		engine: engine,
+		options: {
+		  width: 1600,
+		  height: 700,
+		  wireframes: false
+		}
+	  });
+  
+	  Engine.run(engine);
+	  Render.run(render);
   
 }
 
@@ -38,8 +49,9 @@ function draw() {
 }
 
 function keyPressed(){
-	if(keyDown === UP_ARROW){
+	if(keyCode === UP_ARROW){
 		Matter.Body.applyForce(paper.body,paper.body.position,{x:130,y:-145});
 	}
 }
+
 
